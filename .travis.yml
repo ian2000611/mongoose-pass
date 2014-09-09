@@ -7,5 +7,5 @@ node_js:
 services:
   - mongodb
 env:
-  - secure:
+  - secure: HIEQz1/A8OfHhxKGOVA/5lIzTS4Eg4DVv8qBwq7hGzLj3xjuo/7alxlkj4JrE4zCsi2R7TSWWPbtK+8cKGrOuI/lwLpVfuBKACvJeLTlzW4nmDmJznXVIV0pdZC96dgEKpXvZjop9s3Sl2fgFcymmysK+O6lJsQe3KM5Prn55Og=
 after_success: npm run codeclimate
