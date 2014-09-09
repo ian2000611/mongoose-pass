@@ -43,7 +43,11 @@ module.exports = function createdAt(schema, options) {
   // This is the authentication method
   schema.method(authMethod, function (comparePassword, cb) {
     var compare = bcrypt.compareAsync(comparePassword, this.get(passwordPath));
-    if (typeof cb === 'function') { compare.then(cb, cb); }
+    if (typeof cb === 'function') {
+      compare.then(function (isMatch) {
+        cb(null, isMatch);
+      }, cb);
+    }
     return compare;
   });
 

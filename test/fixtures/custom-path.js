@@ -8,6 +8,8 @@ var TestSchema = new Schema({
   username: String
 });
 
-TestSchema.plugin(password);
+TestSchema.plugin(password, {
+  passwordPath: 'pass'
+});
 
-module.exports = mongoose.model('Test2', TestSchema);
+module.exports = mongoose.model('Test', TestSchema);
