@@ -1,7 +1,10 @@
 # mongoose-pass
 
+[![io.js compatibility](https://img.shields.io/badge/io.js-compatible-brightgreen.svg?style=flat)](https://iojs.org/)
 [![NPM version](http://img.shields.io/npm/v/mongoose-pass.svg?style=flat)](https://www.npmjs.org/package/mongoose-pass)
-[![Dependency Status](http://img.shields.io/gemnasium/ksmithut/mongoose-pass.svg?style=flat)](https://gemnasium.com/ksmithut/mongoose-pass)
+
+[![Dependency Status](http://img.shields.io/david/ksmithut/mongoose-pass.svg?style=flat)](https://gemnasium.com/ksmithut/mongoose-pass)
+[![Dependency Status](http://img.shields.io/david/dev/ksmithut/mongoose-pass.svg?style=flat)](https://gemnasium.com/ksmithut/mongoose-pass)
 [![Code Climate](http://img.shields.io/codeclimate/github/ksmithut/mongoose-pass.svg?style=flat)](https://codeclimate.com/github/ksmithut/mongoose-pass)
 [![Build Status](http://img.shields.io/travis/ksmithut/mongoose-pass.svg?style=flat)](https://travis-ci.org/ksmithut/mongoose-pass)
 [![Coverage Status](http://img.shields.io/codeclimate/coverage/github/ksmithut/mongoose-pass.svg?style=flat)](https://codeclimate.com/github/ksmithut/mongoose-pass)
