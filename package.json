@@ -12,14 +12,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ksmithut/mongoose-pass.git"
+    "url": "git+https://github.com/ksmithut/mongoose-pass.git"
   },
   "keywords": [
     "mongoose",
     "password",
     "hash"
   ],
-  "author": "ksmithut",
+  "author": {
+    "name": "ksmithut"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ksmithut/mongoose-pass/issues"
@@ -38,5 +40,12 @@
   "dependencies": {
     "bcrypt": "^0.8.1",
     "bluebird": "^2.9.6"
-  }
+  },
+  "gitHead": "aef1c6ddb57f7c622e3161c628bb7e7b78de66ea",
+  "readme": "# mongoose-pass\r\n\r\n[![io.js compatibility](https://img.shields.io/badge/io.js-compatible-brightgreen.svg?style=flat)](https://iojs.org/)\r\n[![NPM version](http://img.shields.io/npm/v/mongoose-pass.svg?style=flat)](https://www.npmjs.org/package/mongoose-pass)\r\n\r\n[![Dependency Status](http://img.shields.io/david/ksmithut/mongoose-pass.svg?style=flat)](https://gemnasium.com/ksmithut/mongoose-pass)\r\n[![Dependency Status](http://img.shields.io/david/dev/ksmithut/mongoose-pass.svg?style=flat)](https://gemnasium.com/ksmithut/mongoose-pass)\r\n[![Code Climate](http://img.shields.io/codeclimate/github/ksmithut/mongoose-pass.svg?style=flat)](https://codeclimate.com/github/ksmithut/mongoose-pass)\r\n[![Build Status](http://img.shields.io/travis/ksmithut/mongoose-pass.svg?style=flat)](https://travis-ci.org/ksmithut/mongoose-pass)\r\n[![Coverage Status](http://img.shields.io/codeclimate/coverage/github/ksmithut/mongoose-pass.svg?style=flat)](https://codeclimate.com/github/ksmithut/mongoose-pass)\r\n\r\nAnother mongoose password hashing module.\r\n\r\n# Usage\r\n\r\n```javascript\r\n'use strict';\r\n\r\nvar mongoose = require('mongoose');\r\nvar Schema   = mongoose.Schema;\r\n\r\nvar MySchema = new Schema({\r\n  username: {\r\n    type: String,\r\n    required: true,\r\n    index: {\r\n      unique: true\r\n    }\r\n  }\r\n});\r\n\r\nMySchema.plugin(require('mongoose-pass'));\r\n\r\nMySchema.static('authenticate', function (username, password, cb) {\r\n  // Promise version\r\n  return User.findOne({username: username}).exec().then(function (user) {\r\n    if (!user) { return false; }\r\n    return user.authenticate(password);\r\n  });\r\n  // Callback version\r\n  User.findOne({username: username}, function (err, user) {\r\n    if (err) { return cb(err); }\r\n    if (!user) { return cb(null, false); }\r\n    user.authenticate(password, function (err, isMatch) {\r\n      if (err) { return cb(err); }\r\n      cb(null, isMatch);\r\n    });\r\n  });\r\n});\r\n```\r\n\r\nTo pass in options:\r\n\r\n```javascript\r\nMySchema.plugin(require('mongoose-pass'), {\r\n  passwordPath: 'password',\r\n  authMethod: 'authenticate',\r\n  saltWorkFactor: 10\r\n});\r\n```\r\n\r\nNote in the example above that it added an `authenticate()` method. This method\r\nis an instance method. Once you have a model, you call this method passing in\r\nthe tentative password as the first parameter. Now, you can either pass in a\r\ncallback as the second parameter, or it returns a promise. See examples of both\r\nabove.\r\n\r\n# Options\r\n\r\n* `passwordPath` (String) - The path to add the password property to. Default:\r\n  `'password'`\r\n* `authMethod` (String) - The name of the instance method that authenticates\r\n  a user by password. Default `'authenticate'`\r\n* `saltWorkFactor` (Number) - The salt work factor used to hash the password.\r\n  Increasing this number increases the amount of time it takes to hash a\r\n  password. This is to keep up with Moore's law. Default `10`\r\n",
+  "readmeFilename": "README.md",
+  "_id": "mongoose-pass@1.0.3",
+  "_shasum": "6b421a250d08217874994794dcbd153617ddf0e9",
+  "_from": "ian2000611/mongoose-pass",
+  "_resolved": "git://github.com/ian2000611/mongoose-pass.git#aef1c6ddb57f7c622e3161c628bb7e7b78de66ea"
 }
